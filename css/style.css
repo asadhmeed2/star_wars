@@ -1,0 +1,21 @@
+.table,
+td,th {
+  border: 1px black solid;
+  border-collapse: collapse;
+  text-align: center;
+}
+tr:nth-child(odd){
+    background: rgb(225, 245, 182);
+}
+tr:nth-child(even){
+    background: rgb(237, 249, 212);
+}
+caption{
+ border-left: 1px black solid;
+ border-right: 1px black solid;
+ border-top: 1px black solid;
+ color: white;
+ background: rgb(129, 178, 44);
+}
+
+

@@ -64,8 +64,9 @@ function drowTable(rowDataArray) {
     body.innerHTML += `<table class="table">`;
     body.innerHTML += `</table>`
     let table = document.querySelector('.table')
-    table.innerHTML += `<tr class="title"><td class="name">Name</td> <td class="height">Height</td> <td class="hair-color">Hair</td> <td class="planet-name">Planet Name</td> <td class="planet-population">Planet Population</td></tr>`;
+    table.innerHTML += `<caption>Star Wars</caption><tbody><tr class="title"><td class="name">Name</td> <td class="height">Height</td> <td class="hair-color">Hair</td> <td class="planet-name">Planet Name</td> <td class="planet-population">Planet Population</td></tr></tbody>`;
+    const tbody = document.querySelector('tbody')
     rowDataArray.map((character) => {
-        table.innerHTML += `<tr><td>${character.name}</td><td>${character.height}</td> <td>${character.hairColor}</td> <td>${character.planet.name}</td> <td>${character.planet.population}</td></tr>`;
+        tbody.innerHTML += `<tr><td>${character.name}</td><td>${character.height}</td> <td>${character.hairColor}</td> <td>${character.planet.name}</td> <td>${character.planet.population}</td></tr>`;
     })
 }
