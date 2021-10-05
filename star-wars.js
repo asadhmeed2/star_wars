@@ -14,20 +14,20 @@ async function getDataFromApi(url) {
     return data;
 }
 /*
-@param:
+@param:data the data of the characters from the movie
 @returns:
  */
 async function updateSite(data) {
-    let worlds = await getWorldsNameAndUpdateTable(data);
+    let worlds = await getWorldsName(data);
     console.log(worlds);
     updataFinalTable(data.results, worlds);
 }
 
 /*
-@param:
-@returns:
+@param:data the data of the charactars from the move 
+@returns: 2d array that contain the name and the number of the population of the characters Home Planet
  */
-async function getWorldsNameAndUpdateTable(data) {
+async function getWorldsName(data) {
     console.log(data);
     let worldsNames = data.results.map(async (character) => {
         let homeWorldData = await (await fetch(character.homeworld)).json();
@@ -36,7 +36,8 @@ async function getWorldsNameAndUpdateTable(data) {
     return Promise.all(worldsNames);
 }
 /*
-@param:
+@param: worldNames a 2d arry of palnet data for every character
+        results : an array of objects that constains the data of every needed character
 @returns:
  */
 function updataFinalTable(results, worldsNames) {
@@ -56,7 +57,7 @@ function updataFinalTable(results, worldsNames) {
     drowTable(bodyHtml);
 }
 /*
-@param:
+@param: rowDataArray array of objects that contains the needed data of every needed character
 @returns:
  */
 function drowTable(rowDataArray) {
@@ -67,6 +68,6 @@ function drowTable(rowDataArray) {
     table.innerHTML += `<caption>Star Wars</caption><tbody><tr class="title"><td class="name">Name</td> <td class="height">Height</td> <td class="hair-color">Hair</td> <td class="planet-name">Planet Name</td> <td class="planet-population">Planet Population</td></tr></tbody>`;
     const tbody = document.querySelector('tbody')
     rowDataArray.map((character) => {
-        tbody.innerHTML += `<tr><td>${character.name}</td><td>${character.height}</td> <td>${character.hairColor}</td> <td>${character.planet.name}</td> <td>${character.planet.population}</td></tr>`;
+        tbody.innerHTML += `<tr><td>${character.name}</td><td>${character.height}</td><td>${character.hairColor}</td><td>${character.planet.name}</td> <td>${character.planet.population}</td></tr>`;
     })
 }
